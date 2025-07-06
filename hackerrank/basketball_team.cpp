@@ -14,37 +14,34 @@ using T = tuple<int, int, int>;
 
 
 bool check(vector<int> v, int n, long long p, long long m){
-
-    long long ind=0;
-    while(p>0){
-        if(ind>=n){
-            return false;
-        }
-        p-=(m/v[ind]);
-        ind++;
-    }
-    return true;
+  long long ind = 0;
+  while (p > 0) {
+    if (ind >= n) return false;
+    p -= (m / v[ind]);
+    ind++;
+  }
+  return true;
 }
 
 
 
 int main(){
-    cin.tie(nullptr)->sync_with_stdio(false);
-    int n; ll p;
-    cin >> n >> p;
-    vector<int> v(n);
-    for(auto &x : v) cin >> x;
-    sort(v.begin(), v.end());
+  cin.tie(nullptr)->sync_with_stdio(false);
+  int n;
+  ll p;
+  cin >> n >> p;
+  vector<int> v(n);
+  for (auto &x : v) cin >> x;
+  sort(v.begin(), v.end());
 
-    ll l=0, r=1e12, res=1e12;
+  ll l = 0, r = 1e12, res = 1e12;
 
-    while(l<=r){
-        long long md=l+(r-l)/2;
-        if(check(v, n, p, md)) r=md-1,res=min(res,md);
-        else l=md+1;
-        
-    }
+  while (l <= r) {
+    long long md = l + (r - l) / 2;
+    if (check(v, n, p, md)) r = md - 1, res = min(res, md);
+    else l = md + 1;
+  }
 
-    cout << res;
-    return 0;
+  cout << res;
+  return 0;
 }
