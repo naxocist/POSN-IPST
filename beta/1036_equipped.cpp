@@ -6,7 +6,6 @@ const int N = 1 << 10;
 int dp[N], p[10005];
 
 int main() {
-
     int n, m; scanf("%d%d", &n, &m);
     for(int i=1; i<(1<<m); ++i) dp[i] = 1e7;
     for(int i=0; i<n; ++i) {
